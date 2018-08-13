@@ -29,13 +29,13 @@
 
         <!-- 注释 -->
         <commentGenerator >
-            <property name="suppressAllComments" value="false"/><!-- 是否取消注释 -->
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
             <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳-->
         </commentGenerator>
 
         <!-- jdbc连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.57.12:3306/training5.1?useUnicode=true&amp;characterEncoding=utf-8"
+                        connectionURL="jdbc:mysql://192.168.57.12:3306/hyll_springboot?useUnicode=true&amp;characterEncoding=utf-8"
                         userId="root"
                         password="123456" />
         <!-- 类型转换 -->
@@ -49,7 +49,7 @@
             <!-- 是否用schema为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
             <!-- 数据库返回值清理前后空格 -->
-            <property name="trimStrings" value="true"/>
+            <!--<property name="trimStrings" value="true"/>-->
         </javaModelGenerator>
         <!-- 生成mapxml文件 -->
         <sqlMapGenerator targetPackage="com.example.springboot.dao" targetProject="src/main/java" >

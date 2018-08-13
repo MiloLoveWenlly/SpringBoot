@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.dao.RoleAssociateTreeMapper">
+  <resultMap id="BaseResultMap" type="com.example.springboot.pojo.RoleAssociateTree">
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="tree_id" jdbcType="BIGINT" property="treeId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.springboot.pojo.RoleAssociateTree">
+    insert into role_associate_tree (role_id, tree_id)
+    values (#{roleId,jdbcType=BIGINT}, #{treeId,jdbcType=BIGINT})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select role_id, tree_id
+    from role_associate_tree
+  </select>
+</mapper>

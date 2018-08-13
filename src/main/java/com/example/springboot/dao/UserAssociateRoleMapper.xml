@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.dao.UserAssociateRoleMapper">
+  <resultMap id="BaseResultMap" type="com.example.springboot.pojo.UserAssociateRole">
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.springboot.pojo.UserAssociateRole">
+    insert into user_associate_role (user_id, role_id)
+    values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=BIGINT})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select user_id, role_id
+    from user_associate_role
+  </select>
+</mapper>

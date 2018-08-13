@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.dao.TreeMapper">
+  <resultMap id="BaseResultMap" type="com.example.springboot.pojo.Tree">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="p_id" jdbcType="BIGINT" property="pId" />
+    <result column="tree_order" jdbcType="BIGINT" property="treeOrder" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tree
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.springboot.pojo.Tree">
+    insert into tree (id, code, icon, 
+      `name`, p_id, tree_order, 
+      url, `state`)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{pId,jdbcType=BIGINT}, #{treeOrder,jdbcType=BIGINT}, 
+      #{url,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.springboot.pojo.Tree">
+    update tree
+    set code = #{code,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      p_id = #{pId,jdbcType=BIGINT},
+      tree_order = #{treeOrder,jdbcType=BIGINT},
+      url = #{url,jdbcType=VARCHAR},
+      `state` = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, code, icon, `name`, p_id, tree_order, url, `state`
+    from tree
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, code, icon, `name`, p_id, tree_order, url, `state`
+    from tree
+  </select>
+</mapper>

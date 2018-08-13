@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.dao.OrgGroupMapper">
+  <resultMap id="BaseResultMap" type="com.example.springboot.pojo.OrgGroup">
+    <id column="group_id" jdbcType="BIGINT" property="groupId" />
+    <result column="existing_num" jdbcType="BIGINT" property="existingNum" />
+    <result column="group_code" jdbcType="VARCHAR" property="groupCode" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="node" jdbcType="VARCHAR" property="node" />
+    <result column="num" jdbcType="BIGINT" property="num" />
+    <result column="parent_node" jdbcType="VARCHAR" property="parentNode" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from org_group
+    where group_id = #{groupId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.springboot.pojo.OrgGroup">
+    insert into org_group (group_id, existing_num, group_code, 
+      `name`, node, num, parent_node
+      )
+    values (#{groupId,jdbcType=BIGINT}, #{existingNum,jdbcType=BIGINT}, #{groupCode,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{node,jdbcType=VARCHAR}, #{num,jdbcType=BIGINT}, #{parentNode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.springboot.pojo.OrgGroup">
+    update org_group
+    set existing_num = #{existingNum,jdbcType=BIGINT},
+      group_code = #{groupCode,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      node = #{node,jdbcType=VARCHAR},
+      num = #{num,jdbcType=BIGINT},
+      parent_node = #{parentNode,jdbcType=VARCHAR}
+    where group_id = #{groupId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select group_id, existing_num, group_code, `name`, node, num, parent_node
+    from org_group
+    where group_id = #{groupId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select group_id, existing_num, group_code, `name`, node, num, parent_node
+    from org_group
+  </select>
+</mapper>
